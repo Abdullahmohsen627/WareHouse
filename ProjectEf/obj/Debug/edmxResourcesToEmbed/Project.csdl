@@ -1,0 +1,305 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema xmlns="http://schemas.microsoft.com/ado/2009/11/edm" xmlns:cg="http://schemas.microsoft.com/ado/2006/04/codegeneration" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" Namespace="Project" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" annotation:UseStrongSpatialTypes="false">
+  <EntityContainer Name="ProjectContainer" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="categorizes1" EntityType="Project.categorizes" />
+    <EntitySet Name="Imports1" EntityType="Project.Import" />
+    <EntitySet Name="Exports" EntityType="Project.Export" />
+    <EntitySet Name="ImportedCategories" EntityType="Project.ImportedCategory" />
+    <EntitySet Name="ExportedCategories" EntityType="Project.ExportedCategory" />
+    <EntitySet Name="Movments" EntityType="Project.Movments" />
+    <EntitySet Name="MovedCategories" EntityType="Project.MovedCategory" />
+    <EntitySet Name="StoredCategories" EntityType="Project.StoredCategory" />
+    <EntitySet Name="stores" EntityType="Project.stores" />
+    <EntitySet Name="Suppliers1" EntityType="Project.Suppliers" />
+    <EntitySet Name="Clients" EntityType="Project.Clients" />
+    <AssociationSet Name="categorizesExportedCategory" Association="Project.categorizesExportedCategory">
+      <End Role="categorizes" EntitySet="categorizes1" />
+      <End Role="ExportedCategory" EntitySet="ExportedCategories" />
+    </AssociationSet>
+    <AssociationSet Name="categorizesMovedCategory" Association="Project.categorizesMovedCategory">
+      <End Role="categorizes" EntitySet="categorizes1" />
+      <End Role="MovedCategory" EntitySet="MovedCategories" />
+    </AssociationSet>
+    <AssociationSet Name="categorizesStoredCategory" Association="Project.categorizesStoredCategory">
+      <End Role="categorizes" EntitySet="categorizes1" />
+      <End Role="StoredCategory" EntitySet="StoredCategories" />
+    </AssociationSet>
+    <AssociationSet Name="ExportExportedCategory" Association="Project.ExportExportedCategory">
+      <End Role="Export" EntitySet="Exports" />
+      <End Role="ExportedCategory" EntitySet="ExportedCategories" />
+    </AssociationSet>
+    <AssociationSet Name="MovmentsMovedCategory" Association="Project.MovmentsMovedCategory">
+      <End Role="Movments" EntitySet="Movments" />
+      <End Role="MovedCategory" EntitySet="MovedCategories" />
+    </AssociationSet>
+    <AssociationSet Name="storesStoredCategory" Association="Project.storesStoredCategory">
+      <End Role="stores" EntitySet="stores" />
+      <End Role="StoredCategory" EntitySet="StoredCategories" />
+    </AssociationSet>
+    <AssociationSet Name="categorizesImportedCategory" Association="Project.categorizesImportedCategory">
+      <End Role="categorizes" EntitySet="categorizes1" />
+      <End Role="ImportedCategory" EntitySet="ImportedCategories" />
+    </AssociationSet>
+    <AssociationSet Name="ImportImportedCategory" Association="Project.ImportImportedCategory">
+      <End Role="Import" EntitySet="Imports1" />
+      <End Role="ImportedCategory" EntitySet="ImportedCategories" />
+    </AssociationSet>
+    <AssociationSet Name="SuppliersImport" Association="Project.SuppliersImport">
+      <End Role="Suppliers" EntitySet="Suppliers1" />
+      <End Role="Import" EntitySet="Imports1" />
+    </AssociationSet>
+    <AssociationSet Name="ClientsExport" Association="Project.ClientsExport">
+      <End Role="Clients" EntitySet="Clients" />
+      <End Role="Export" EntitySet="Exports" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="categorizes">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="UnitM" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Amount" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="ExportedCategories" Relationship="Project.categorizesExportedCategory" FromRole="categorizes" ToRole="ExportedCategory" />
+    <NavigationProperty Name="MovedCategories" Relationship="Project.categorizesMovedCategory" FromRole="categorizes" ToRole="MovedCategory" />
+    <NavigationProperty Name="StoredCategories" Relationship="Project.categorizesStoredCategory" FromRole="categorizes" ToRole="StoredCategory" />
+    <NavigationProperty Name="ImportedCategories" Relationship="Project.categorizesImportedCategory" FromRole="categorizes" ToRole="ImportedCategory" />
+  </EntityType>
+  <EntityType Name="Import">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="StoreName" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Date" Type="DateTime" Nullable="false" Precision="3" />
+    <NavigationProperty Name="ImportedCategories" Relationship="Project.ImportImportedCategory" FromRole="Import" ToRole="ImportedCategory" />
+    <NavigationProperty Name="Supplier" Relationship="Project.SuppliersImport" FromRole="Import" ToRole="Suppliers" />
+    <Property Name="SuppliersId" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Export">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="StoreName" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Date" Type="DateTime" Nullable="false" Precision="3" />
+    <NavigationProperty Name="ExportedCategories" Relationship="Project.ExportExportedCategory" FromRole="Export" ToRole="ExportedCategory" />
+    <NavigationProperty Name="Client" Relationship="Project.ClientsExport" FromRole="Export" ToRole="Clients" />
+    <Property Name="ClientsId" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ImportedCategory">
+    <Key>
+      <PropertyRef Name="ImportId" />
+      <PropertyRef Name="categorizesId" />
+    </Key>
+    <Property Name="ImportId" Type="Int32" Nullable="false" />
+    <Property Name="categorizesId" Type="Int32" Nullable="false" />
+    <Property Name="Amount" Type="Int32" Nullable="false" />
+    <Property Name="prodDate" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="ExpDate" Type="DateTime" Nullable="false" Precision="0" />
+    <NavigationProperty Name="categorize" Relationship="Project.categorizesImportedCategory" FromRole="ImportedCategory" ToRole="categorizes" />
+    <NavigationProperty Name="Import" Relationship="Project.ImportImportedCategory" FromRole="ImportedCategory" ToRole="Import" />
+  </EntityType>
+  <EntityType Name="ExportedCategory">
+    <Key>
+      <PropertyRef Name="ExportId" />
+      <PropertyRef Name="categorizesId" />
+    </Key>
+    <Property Name="ExportId" Type="Int32" Nullable="false" />
+    <Property Name="categorizesId" Type="Int32" Nullable="false" />
+    <Property Name="Amount" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="categorize" Relationship="Project.categorizesExportedCategory" FromRole="ExportedCategory" ToRole="categorizes" />
+    <NavigationProperty Name="Export" Relationship="Project.ExportExportedCategory" FromRole="ExportedCategory" ToRole="Export" />
+  </EntityType>
+  <EntityType Name="Movments">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="FromStore" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="ToStore" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Amount" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="MovedCategories" Relationship="Project.MovmentsMovedCategory" FromRole="Movments" ToRole="MovedCategory" />
+  </EntityType>
+  <EntityType Name="MovedCategory">
+    <Key>
+      <PropertyRef Name="MovmentsId" />
+      <PropertyRef Name="categorizesId" />
+    </Key>
+    <Property Name="MovmentsId" Type="Int32" Nullable="false" />
+    <Property Name="categorizesId" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="categorize" Relationship="Project.categorizesMovedCategory" FromRole="MovedCategory" ToRole="categorizes" />
+    <NavigationProperty Name="Movment" Relationship="Project.MovmentsMovedCategory" FromRole="MovedCategory" ToRole="Movments" />
+  </EntityType>
+  <EntityType Name="StoredCategory">
+    <Key>
+      <PropertyRef Name="storesId" />
+      <PropertyRef Name="categorizesId" />
+      <PropertyRef Name="ProdDate" />
+    </Key>
+    <Property Name="storesId" Type="Int32" Nullable="false" />
+    <Property Name="categorizesId" Type="Int32" Nullable="false" />
+    <Property Name="AmountInStore" Type="Int32" Nullable="false" />
+    <Property Name="ProdDate" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="ExpDate" Type="DateTime" Nullable="false" Precision="0" />
+    <NavigationProperty Name="categorize" Relationship="Project.categorizesStoredCategory" FromRole="StoredCategory" ToRole="categorizes" />
+    <NavigationProperty Name="store" Relationship="Project.storesStoredCategory" FromRole="StoredCategory" ToRole="stores" />
+  </EntityType>
+  <EntityType Name="stores">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Adress" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="ManagerName" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="StoredCategories" Relationship="Project.storesStoredCategory" FromRole="stores" ToRole="StoredCategory" />
+  </EntityType>
+  <EntityType Name="Suppliers">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="PhoneNum" Type="Int32" Nullable="false" />
+    <Property Name="Fax" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Tele" Type="Int32" Nullable="false" />
+    <Property Name="Mail" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="WebSite" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Imports" Relationship="Project.SuppliersImport" FromRole="Suppliers" ToRole="Import" />
+  </EntityType>
+  <EntityType Name="Clients">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CName" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="CPhone" Type="Int32" Nullable="false" />
+    <Property Name="Fax" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Tele" Type="Int32" Nullable="false" />
+    <Property Name="Mail" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Website" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Exports" Relationship="Project.ClientsExport" FromRole="Clients" ToRole="Export" />
+  </EntityType>
+  <Association Name="categorizesExportedCategory">
+    <End Type="Project.categorizes" Role="categorizes" Multiplicity="1" />
+    <End Type="Project.ExportedCategory" Role="ExportedCategory" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="categorizes">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ExportedCategory">
+        <PropertyRef Name="categorizesId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="categorizesMovedCategory">
+    <End Type="Project.categorizes" Role="categorizes" Multiplicity="1" />
+    <End Type="Project.MovedCategory" Role="MovedCategory" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="categorizes">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="MovedCategory">
+        <PropertyRef Name="categorizesId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="categorizesStoredCategory">
+    <End Type="Project.categorizes" Role="categorizes" Multiplicity="1" />
+    <End Type="Project.StoredCategory" Role="StoredCategory" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="categorizes">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="StoredCategory">
+        <PropertyRef Name="categorizesId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ExportExportedCategory">
+    <End Type="Project.Export" Role="Export" Multiplicity="1" />
+    <End Type="Project.ExportedCategory" Role="ExportedCategory" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Export">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ExportedCategory">
+        <PropertyRef Name="ExportId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="MovmentsMovedCategory">
+    <End Type="Project.Movments" Role="Movments" Multiplicity="1" />
+    <End Type="Project.MovedCategory" Role="MovedCategory" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Movments">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="MovedCategory">
+        <PropertyRef Name="MovmentsId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="storesStoredCategory">
+    <End Type="Project.stores" Role="stores" Multiplicity="1" />
+    <End Type="Project.StoredCategory" Role="StoredCategory" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="stores">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="StoredCategory">
+        <PropertyRef Name="storesId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="categorizesImportedCategory">
+    <End Type="Project.categorizes" Role="categorizes" Multiplicity="1" />
+    <End Type="Project.ImportedCategory" Role="ImportedCategory" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="categorizes">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ImportedCategory">
+        <PropertyRef Name="categorizesId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ImportImportedCategory">
+    <End Type="Project.Import" Role="Import" Multiplicity="1" />
+    <End Type="Project.ImportedCategory" Role="ImportedCategory" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Import">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ImportedCategory">
+        <PropertyRef Name="ImportId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="SuppliersImport">
+    <End Type="Project.Suppliers" Role="Suppliers" Multiplicity="1" />
+    <End Type="Project.Import" Role="Import" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Suppliers">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Import">
+        <PropertyRef Name="SuppliersId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ClientsExport">
+    <End Type="Project.Clients" Role="Clients" Multiplicity="1" />
+    <End Type="Project.Export" Role="Export" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Clients">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Export">
+        <PropertyRef Name="ClientsId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

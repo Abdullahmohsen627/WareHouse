@@ -1,0 +1,75 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "E:\\source\\repos\\ProjectEf\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{32C98E99-DCFB-4752-8824-642A607CCDDA}|ProjectEf\\ProjectEf.csproj|E:\\source\\repos\\ProjectEf\\projectef\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{32C98E99-DCFB-4752-8824-642A607CCDDA}|ProjectEf\\ProjectEf.csproj|solutionrelative:projectef\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{32C98E99-DCFB-4752-8824-642A607CCDDA}|ProjectEf\\ProjectEf.csproj|e:\\source\\repos\\projectef\\projectef\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{32C98E99-DCFB-4752-8824-642A607CCDDA}|ProjectEf\\ProjectEf.csproj|solutionrelative:projectef\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{32C98E99-DCFB-4752-8824-642A607CCDDA}|ProjectEf\\ProjectEf.csproj|E:\\source\\repos\\ProjectEf\\projectef\\project.edmx||{C99AEA30-8E36-4515-B76F-496F5A48A6AA}|",
+      "RelativeMoniker": "D:0:0:{32C98E99-DCFB-4752-8824-642A607CCDDA}|ProjectEf\\ProjectEf.csproj|solutionrelative:projectef\\project.edmx||{C99AEA30-8E36-4515-B76F-496F5A48A6AA}|"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 4,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:128:0:{75188d03-9892-4ae2-abf1-207126247ce5}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Form1.cs",
+              "DocumentMoniker": "E:\\source\\repos\\ProjectEf\\ProjectEf\\Form1.cs",
+              "RelativeDocumentMoniker": "ProjectEf\\Form1.cs",
+              "ToolTip": "E:\\source\\repos\\ProjectEf\\ProjectEf\\Form1.cs",
+              "RelativeToolTip": "ProjectEf\\Form1.cs",
+              "ViewState": "AgIAAC4BAAAAAAAAAADgv2kBAAAzAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-02T17:34:47.541Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Project.edmx [Diagram1]",
+              "DocumentMoniker": "E:\\source\\repos\\ProjectEf\\ProjectEf\\Project.edmx",
+              "RelativeDocumentMoniker": "ProjectEf\\Project.edmx",
+              "ToolTip": "C:\\Users\\lapcell\\source\\repos\\ProjectEf\\ProjectEf\\Project.edmx [Diagram1]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001116|",
+              "WhenOpened": "2025-06-02T18:20:39.971Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Form1.cs [Design]",
+              "DocumentMoniker": "E:\\source\\repos\\ProjectEf\\ProjectEf\\Form1.cs",
+              "RelativeDocumentMoniker": "ProjectEf\\Form1.cs",
+              "ToolTip": "E:\\source\\repos\\ProjectEf\\ProjectEf\\Form1.cs [Design]",
+              "RelativeToolTip": "ProjectEf\\Form1.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-02T16:32:22.729Z",
+              "EditorCaption": " [Design]"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

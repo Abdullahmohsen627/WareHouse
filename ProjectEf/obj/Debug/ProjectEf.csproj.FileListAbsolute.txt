@@ -1,0 +1,13 @@
+C:\Users\lapcell\source\repos\ProjectEf\ProjectEf\obj\Debug\ProjectEf.csproj.AssemblyReference.cache
+C:\Users\lapcell\source\repos\ProjectEf\ProjectEf\obj\Debug\ProjectEf.Form1.resources
+C:\Users\lapcell\source\repos\ProjectEf\ProjectEf\obj\Debug\ProjectEf.Properties.Resources.resources
+C:\Users\lapcell\source\repos\ProjectEf\ProjectEf\obj\Debug\ProjectEf.csproj.GenerateResource.cache
+C:\Users\lapcell\source\repos\ProjectEf\ProjectEf\obj\Debug\ProjectEf.csproj.CoreCompileInputs.cache
+C:\Users\lapcell\source\repos\ProjectEf\ProjectEf\bin\Debug\ProjectEf.exe.config
+C:\Users\lapcell\source\repos\ProjectEf\ProjectEf\bin\Debug\ProjectEf.exe
+C:\Users\lapcell\source\repos\ProjectEf\ProjectEf\bin\Debug\ProjectEf.pdb
+C:\Users\lapcell\source\repos\ProjectEf\ProjectEf\bin\Debug\EntityFramework.dll
+C:\Users\lapcell\source\repos\ProjectEf\ProjectEf\bin\Debug\EntityFramework.xml
+C:\Users\lapcell\source\repos\ProjectEf\ProjectEf\obj\Debug\ProjectEf.csproj.Up2Date
+C:\Users\lapcell\source\repos\ProjectEf\ProjectEf\obj\Debug\ProjectEf.exe
+C:\Users\lapcell\source\repos\ProjectEf\ProjectEf\obj\Debug\ProjectEf.pdb

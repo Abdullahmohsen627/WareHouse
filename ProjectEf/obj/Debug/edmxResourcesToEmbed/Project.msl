@@ -1,0 +1,120 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="ProjectStoreContainer" CdmEntityContainer="ProjectContainer">
+    <EntitySetMapping Name="categorizes1">
+      <EntityTypeMapping TypeName="IsTypeOf(Project.categorizes)">
+        <MappingFragment StoreEntitySet="categorizes1">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="UnitM" ColumnName="UnitM" />
+          <ScalarProperty Name="Amount" ColumnName="Amount" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Imports1">
+      <EntityTypeMapping TypeName="IsTypeOf(Project.Import)">
+        <MappingFragment StoreEntitySet="Imports1">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="StoreName" ColumnName="StoreName" />
+          <ScalarProperty Name="Date" ColumnName="Date" />
+          <ScalarProperty Name="SuppliersId" ColumnName="SuppliersId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Exports">
+      <EntityTypeMapping TypeName="IsTypeOf(Project.Export)">
+        <MappingFragment StoreEntitySet="Exports">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="StoreName" ColumnName="StoreName" />
+          <ScalarProperty Name="Date" ColumnName="Date" />
+          <ScalarProperty Name="ClientsId" ColumnName="ClientsId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ImportedCategories">
+      <EntityTypeMapping TypeName="IsTypeOf(Project.ImportedCategory)">
+        <MappingFragment StoreEntitySet="ImportedCategories">
+          <ScalarProperty Name="ImportId" ColumnName="ImportId" />
+          <ScalarProperty Name="categorizesId" ColumnName="categorizesId" />
+          <ScalarProperty Name="Amount" ColumnName="Amount" />
+          <ScalarProperty Name="prodDate" ColumnName="prodDate" />
+          <ScalarProperty Name="ExpDate" ColumnName="ExpDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ExportedCategories">
+      <EntityTypeMapping TypeName="IsTypeOf(Project.ExportedCategory)">
+        <MappingFragment StoreEntitySet="ExportedCategories">
+          <ScalarProperty Name="ExportId" ColumnName="ExportId" />
+          <ScalarProperty Name="categorizesId" ColumnName="categorizesId" />
+          <ScalarProperty Name="Amount" ColumnName="Amount" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Movments">
+      <EntityTypeMapping TypeName="IsTypeOf(Project.Movments)">
+        <MappingFragment StoreEntitySet="Movments">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="FromStore" ColumnName="FromStore" />
+          <ScalarProperty Name="ToStore" ColumnName="ToStore" />
+          <ScalarProperty Name="Amount" ColumnName="Amount" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MovedCategories">
+      <EntityTypeMapping TypeName="IsTypeOf(Project.MovedCategory)">
+        <MappingFragment StoreEntitySet="MovedCategories">
+          <ScalarProperty Name="MovmentsId" ColumnName="MovmentsId" />
+          <ScalarProperty Name="categorizesId" ColumnName="categorizesId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="StoredCategories">
+      <EntityTypeMapping TypeName="IsTypeOf(Project.StoredCategory)">
+        <MappingFragment StoreEntitySet="StoredCategories">
+          <ScalarProperty Name="storesId" ColumnName="storesId" />
+          <ScalarProperty Name="categorizesId" ColumnName="categorizesId" />
+          <ScalarProperty Name="ProdDate" ColumnName="ProdDate" />
+          <ScalarProperty Name="AmountInStore" ColumnName="AmountInStore" />
+          <ScalarProperty Name="ExpDate" ColumnName="ExpDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="stores">
+      <EntityTypeMapping TypeName="IsTypeOf(Project.stores)">
+        <MappingFragment StoreEntitySet="stores">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Adress" ColumnName="Adress" />
+          <ScalarProperty Name="ManagerName" ColumnName="ManagerName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Suppliers1">
+      <EntityTypeMapping TypeName="IsTypeOf(Project.Suppliers)">
+        <MappingFragment StoreEntitySet="Suppliers1">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="PhoneNum" ColumnName="PhoneNum" />
+          <ScalarProperty Name="Fax" ColumnName="Fax" />
+          <ScalarProperty Name="Tele" ColumnName="Tele" />
+          <ScalarProperty Name="Mail" ColumnName="Mail" />
+          <ScalarProperty Name="WebSite" ColumnName="WebSite" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Clients">
+      <EntityTypeMapping TypeName="IsTypeOf(Project.Clients)">
+        <MappingFragment StoreEntitySet="Clients">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="CName" ColumnName="CName" />
+          <ScalarProperty Name="CPhone" ColumnName="CPhone" />
+          <ScalarProperty Name="Fax" ColumnName="Fax" />
+          <ScalarProperty Name="Tele" ColumnName="Tele" />
+          <ScalarProperty Name="Mail" ColumnName="Mail" />
+          <ScalarProperty Name="Website" ColumnName="Website" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

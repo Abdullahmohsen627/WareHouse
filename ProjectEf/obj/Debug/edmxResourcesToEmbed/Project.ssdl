@@ -1,0 +1,285 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Project.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="categorizes1">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="UnitM" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Amount" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Clients">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CName" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="CPhone" Type="int" Nullable="false" />
+    <Property Name="Fax" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Tele" Type="int" Nullable="false" />
+    <Property Name="Mail" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Website" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ExportedCategories">
+    <Key>
+      <PropertyRef Name="ExportId" />
+      <PropertyRef Name="categorizesId" />
+    </Key>
+    <Property Name="ExportId" Type="int" Nullable="false" />
+    <Property Name="categorizesId" Type="int" Nullable="false" />
+    <Property Name="Amount" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Exports">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="StoreName" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Date" Type="datetime" Nullable="false" />
+    <Property Name="ClientsId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ImportedCategories">
+    <Key>
+      <PropertyRef Name="ImportId" />
+      <PropertyRef Name="categorizesId" />
+    </Key>
+    <Property Name="ImportId" Type="int" Nullable="false" />
+    <Property Name="categorizesId" Type="int" Nullable="false" />
+    <Property Name="Amount" Type="int" Nullable="false" />
+    <Property Name="prodDate" Type="date" Nullable="false" />
+    <Property Name="ExpDate" Type="date" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Imports1">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="StoreName" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Date" Type="datetime" Nullable="false" />
+    <Property Name="SuppliersId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="MovedCategories">
+    <Key>
+      <PropertyRef Name="MovmentsId" />
+      <PropertyRef Name="categorizesId" />
+    </Key>
+    <Property Name="MovmentsId" Type="int" Nullable="false" />
+    <Property Name="categorizesId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Movments">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="FromStore" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="ToStore" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Amount" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="StoredCategories">
+    <Key>
+      <PropertyRef Name="storesId" />
+      <PropertyRef Name="categorizesId" />
+      <PropertyRef Name="ProdDate" />
+    </Key>
+    <Property Name="storesId" Type="int" Nullable="false" />
+    <Property Name="categorizesId" Type="int" Nullable="false" />
+    <Property Name="AmountInStore" Type="int" Nullable="false" />
+    <Property Name="ProdDate" Type="date" Nullable="false" />
+    <Property Name="ExpDate" Type="date" Nullable="false" />
+  </EntityType>
+  <EntityType Name="stores">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Adress" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="ManagerName" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Suppliers1">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="PhoneNum" Type="int" Nullable="false" />
+    <Property Name="Fax" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Tele" Type="int" Nullable="false" />
+    <Property Name="Mail" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="WebSite" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_categorizesExportedCategory">
+    <End Role="categorizes1" Type="Self.categorizes1" Multiplicity="1" />
+    <End Role="ExportedCategories" Type="Self.ExportedCategories" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="categorizes1">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ExportedCategories">
+        <PropertyRef Name="categorizesId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_categorizesImportedCategory">
+    <End Role="categorizes1" Type="Self.categorizes1" Multiplicity="1" />
+    <End Role="ImportedCategories" Type="Self.ImportedCategories" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="categorizes1">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ImportedCategories">
+        <PropertyRef Name="categorizesId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_categorizesMovedCategory">
+    <End Role="categorizes1" Type="Self.categorizes1" Multiplicity="1" />
+    <End Role="MovedCategories" Type="Self.MovedCategories" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="categorizes1">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="MovedCategories">
+        <PropertyRef Name="categorizesId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_categorizesStoredCategory">
+    <End Role="categorizes1" Type="Self.categorizes1" Multiplicity="1" />
+    <End Role="StoredCategories" Type="Self.StoredCategories" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="categorizes1">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="StoredCategories">
+        <PropertyRef Name="categorizesId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ClientsExport">
+    <End Role="Clients" Type="Self.Clients" Multiplicity="1" />
+    <End Role="Exports" Type="Self.Exports" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Clients">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Exports">
+        <PropertyRef Name="ClientsId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ExportExportedCategory">
+    <End Role="Exports" Type="Self.Exports" Multiplicity="1" />
+    <End Role="ExportedCategories" Type="Self.ExportedCategories" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Exports">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ExportedCategories">
+        <PropertyRef Name="ExportId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ImportImportedCategory">
+    <End Role="Imports1" Type="Self.Imports1" Multiplicity="1" />
+    <End Role="ImportedCategories" Type="Self.ImportedCategories" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Imports1">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ImportedCategories">
+        <PropertyRef Name="ImportId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_MovmentsMovedCategory">
+    <End Role="Movments" Type="Self.Movments" Multiplicity="1" />
+    <End Role="MovedCategories" Type="Self.MovedCategories" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Movments">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="MovedCategories">
+        <PropertyRef Name="MovmentsId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_storesStoredCategory">
+    <End Role="stores" Type="Self.stores" Multiplicity="1" />
+    <End Role="StoredCategories" Type="Self.StoredCategories" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="stores">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="StoredCategories">
+        <PropertyRef Name="storesId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SuppliersImport">
+    <End Role="Suppliers1" Type="Self.Suppliers1" Multiplicity="1" />
+    <End Role="Imports1" Type="Self.Imports1" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Suppliers1">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Imports1">
+        <PropertyRef Name="SuppliersId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="ProjectStoreContainer">
+    <EntitySet Name="categorizes1" EntityType="Self.categorizes1" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Clients" EntityType="Self.Clients" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ExportedCategories" EntityType="Self.ExportedCategories" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Exports" EntityType="Self.Exports" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ImportedCategories" EntityType="Self.ImportedCategories" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Imports1" EntityType="Self.Imports1" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="MovedCategories" EntityType="Self.MovedCategories" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Movments" EntityType="Self.Movments" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="StoredCategories" EntityType="Self.StoredCategories" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="stores" EntityType="Self.stores" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Suppliers1" EntityType="Self.Suppliers1" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_categorizesExportedCategory" Association="Self.FK_categorizesExportedCategory">
+      <End Role="categorizes1" EntitySet="categorizes1" />
+      <End Role="ExportedCategories" EntitySet="ExportedCategories" />
+    </AssociationSet>
+    <AssociationSet Name="FK_categorizesImportedCategory" Association="Self.FK_categorizesImportedCategory">
+      <End Role="categorizes1" EntitySet="categorizes1" />
+      <End Role="ImportedCategories" EntitySet="ImportedCategories" />
+    </AssociationSet>
+    <AssociationSet Name="FK_categorizesMovedCategory" Association="Self.FK_categorizesMovedCategory">
+      <End Role="categorizes1" EntitySet="categorizes1" />
+      <End Role="MovedCategories" EntitySet="MovedCategories" />
+    </AssociationSet>
+    <AssociationSet Name="FK_categorizesStoredCategory" Association="Self.FK_categorizesStoredCategory">
+      <End Role="categorizes1" EntitySet="categorizes1" />
+      <End Role="StoredCategories" EntitySet="StoredCategories" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ClientsExport" Association="Self.FK_ClientsExport">
+      <End Role="Clients" EntitySet="Clients" />
+      <End Role="Exports" EntitySet="Exports" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ExportExportedCategory" Association="Self.FK_ExportExportedCategory">
+      <End Role="Exports" EntitySet="Exports" />
+      <End Role="ExportedCategories" EntitySet="ExportedCategories" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ImportImportedCategory" Association="Self.FK_ImportImportedCategory">
+      <End Role="Imports1" EntitySet="Imports1" />
+      <End Role="ImportedCategories" EntitySet="ImportedCategories" />
+    </AssociationSet>
+    <AssociationSet Name="FK_MovmentsMovedCategory" Association="Self.FK_MovmentsMovedCategory">
+      <End Role="Movments" EntitySet="Movments" />
+      <End Role="MovedCategories" EntitySet="MovedCategories" />
+    </AssociationSet>
+    <AssociationSet Name="FK_storesStoredCategory" Association="Self.FK_storesStoredCategory">
+      <End Role="stores" EntitySet="stores" />
+      <End Role="StoredCategories" EntitySet="StoredCategories" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SuppliersImport" Association="Self.FK_SuppliersImport">
+      <End Role="Suppliers1" EntitySet="Suppliers1" />
+      <End Role="Imports1" EntitySet="Imports1" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
